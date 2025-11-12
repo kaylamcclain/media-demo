@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello kitty video</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f7b7d2;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .video-container {
+            width: 100%;
+            max-width: 700px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .control-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease, filter 0.3s ease;
+            padding: 0;
+        }
+
+        .control-btn:hover {
+            transform: scale(1.1);
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
+        }
+
+        .control-btn:active {
+            transform: scale(0.95);
+        }
+
+        .control-btn img {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+        }
+
+        @media (max-width: 600px) {
+            .control-btn img {
+                width: 90px;
+                height: 90px;
+            }
+
+            .button-container {
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="video-container">
+            <img src="images/logo.jpg" style="width: 50px; text-align: center;">
+            <video id="videoPlayer" controls>
+                <source src="video/bday hello kitty.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="button-container">
+            <button class="control-btn" id="playBtn">
+                <img src="images/hi.png" alt="Play">
+            </button>
+
+            <button class="control-btn" id="pauseBtn">
+                <img src="images/bye.gif" alt="Pause" style="width: 90px;">
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const video = document.getElementById('videoPlayer');
+        const playBtn = document.getElementById('playBtn');
+        const pauseBtn = document.getElementById('pauseBtn');
+
+        // Play button functionality
+        playBtn.addEventListener('click', () => {
+            video.play();
+        });
+
+        // Pause button functionality
+        pauseBtn.addEventListener('click', () => {
+            video.pause();
+        });
+
+        // Optional: Update button states based on video state
+        video.addEventListener('play', () => {
+            playBtn.style.opacity = '0.5';
+            pauseBtn.style.opacity = '1';
+        });
+
+        video.addEventListener('pause', () => {
+            playBtn.style.opacity = '1';
+            pauseBtn.style.opacity = '0.5';
+        });
+    </script>
+</body>
+</html>
